@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Edit Post</h1>
-    <form action = "" method = "post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type = "submit" value="update">
-    </form>
-
+    {% if user.is_authenticated %}
+        <h1>Edit Post</h1>
+        <form action = "" method = "post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = "submit" value="update">
+        </form>
+    {% else %}
+    You can't Edit This Page, You aren't Logged in!
+    {% endif %}        
 {% endblock %}
